@@ -31,15 +31,11 @@ public class Question29 {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		boolean a= true;
+		boolean z= true;
 		int secim;
 		
 		do {
-			System.out.println("**************************");
-			System.out.println("**************************");
-			System.out.println("*Yapmak İstediginiz İslem*");
-			System.out.println("**************************");
-			System.out.println("**************************");
+			System.out.println("*Menü*");
 			System.out.println("1- Kac Harf Oldugunu Bul, ");
 			System.out.println("2- Harf Degistirme islemi");
 			System.out.println("3- Ters Cevirme");
@@ -72,34 +68,75 @@ public class Question29 {
 				break;
 				
 			case 2:
-				System.out.print("Lütfen bir kelime giriniz");
+				System.out.print("Lütfen bir kelime giriniz: ");
 				kelime = sc.nextLine();
+				kelime = kelime.toLowerCase();
 				System.out.print("Degistirmek istediginiz harfi giriniz: ");
 				String ilkHarf = sc.nextLine();
 				System.out.println("Yerine koymak istediginiz harfi giriniz: ");
 				String sonHarf=sc.nextLine();
 				kelime = kelime.replace(ilkHarf, sonHarf);
 				System.out.println(kelime);
+				break;
 			case 3:
-				System.out.print("Lütfen bir kelime giriniz");
-				kelime = sc.nextLine();
-				String yeniKelime;
-				int k,l;
-				for(k=0; k<kelime.length(); k++) {
-				l = kelime.length()-1;
-				yeniKelime =; 
-						l--;		
+				System.out.print("Ters girilcek ismi giriniz: ");
+				String isim = sc.nextLine();
+//				boolean isPalindrome = true;
+				String tersisim = "";
+				for (int i = isim.length() - 1; i >= 0; i--) {
+					tersisim += isim.toLowerCase().charAt(i);
 				}
-				System.out.println(yeniKelime);
-				if(yeniKelime == kelime) {
-					System.out.println("Bu kelime bir polindromdur.");
-				}else {
-					System.out.println("kelimeniz polindrom degildir.");
+				if (isim.toLowerCase().equals(tersisim)) {
+					System.out.println("Bu kelime bir polindromdur." + tersisim + " <- tersten yazılış şekli");
+				} else {
+					System.out.println("Bu kelime bir polindrom değildir." + tersisim + " <- tersten yazılış şekli");
 				}
-			}	
+				break;
+//				while (left < right) {
+//					if (kelime.charAt(left) != kelime.charAt(right)) {
+//						isPalindrome = false;
+//					}
+//					left++;
+//					right--;
+//				}
+//				if (isPalindrome) {
+//					System.out.println("Palindromdur!");
+//				} else {
+//					System.out.println("Palindrom değildir!");
+//				}
 				
-			
-		}while(a);
+			case 4:
+				int a=0,b=0,c=0,d=0, toplam = 0;
+				System.out.println("\nSayfa açma");
+				System.out.println("Lütfen 5 adet gelime giriniz: ");
+				for(int i = 0; i<5;i++) {
+					System.out.println((i+1) + ". kelimeyi giriniz: ");
+					kelime=sc.nextLine();
+					
+					if(kelime.charAt(0)=='a') {
+						a=1;
+					}else if(kelime.charAt(0)== 'b') {
+						b = 1;
+					}else if(kelime.charAt(0)=='c') {
+						c=1;
+					}else {
+						d+=1;
+					}
+					toplam = a+b+c+d;
+					System.out.println("Toplam dosya sayısı: "+ toplam);
+				}
+				
+				
+				
+			case 0:
+				z=false;
+				default:
+					System.out.println("UYGULAMA KAPATILDI");
+					break;
+				
+					
+				}	
+		}while(z);
 		
 	}
 
