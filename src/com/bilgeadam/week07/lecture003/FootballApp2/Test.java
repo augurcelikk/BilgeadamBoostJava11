@@ -29,8 +29,8 @@ public class Test {
 //
 //		}
 
-		Takim takim = new Takim("Fenerbahce");
-		Takim takim2 = new Takim("Galatasaray");
+		Takim takim = new Takim("Samsunspor");
+		Takim takim2 = new Takim("Fenerbahce");
 
 		List<Takim> takimlar = new ArrayList<>();
 		takimlar.add(takim);
