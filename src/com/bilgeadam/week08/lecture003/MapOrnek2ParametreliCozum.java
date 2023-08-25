@@ -19,6 +19,7 @@ public class MapOrnek2ParametreliCozum {
 
 		mapOlustur(ogrenci, notlar);
 		mapYazdir(mapOlustur(ogrenci, notlar));
+
 	}
 
 	public static Map<String, Integer> mapOlustur(String[] ogrenci, int[] notlar) {
