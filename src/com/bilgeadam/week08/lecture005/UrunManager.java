@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class UrunManager {
 
@@ -64,5 +65,15 @@ public class UrunManager {
 			return y;
 		}).forEach(System.out::println);
 		;
+
 	}
+
+	public void ortalama(List<Urun> urunLer) {
+		double ort = urunLer.stream().collect(Collectors.averagingDouble(Urun::getFiyat));
+		System.out.println("Ortalama " + ort);// Stream Apı ile kullanımı..
+		// double
+		// ort2=urunLer.stream().mapToDouble(Urun::getFiyat).average().orElse(0.0);
+		urunLer.stream().mapToDouble(Urun::getFiyat).average().ifPresent(System.out::println);
+	}
+
 }
