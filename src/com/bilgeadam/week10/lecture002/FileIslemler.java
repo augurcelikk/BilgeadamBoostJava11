@@ -2,6 +2,7 @@ package com.bilgeadam.week10.lecture002;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,14 +25,20 @@ public class FileIslemler {
 	 * "bu dosya daha once yaratilmistir" gibi bir cikti versin.
 	 * 3 - dosyamıza dirasidan aldigimiz bir veriyi ekleyelim. (scanner ile alalım) ve her ekleme yapildiktan sonra bir sonraki ekleme
 	 * için alt satira geçis yapilsin.
+	 * 4- Dosyadan veri okumak için bir metot yazalim
+	 * 5- Harfdegistir metodunu yazailim. bu metot bir string parametre alsin,
+	 * içerisindeki harfi istenilen harf ile değiştirip dosyaya kaydetsin.
+	 * 6- Dosya silmek için bir metot yazalim
 	 */
 	
 	public static void main(String[] args) {
 		FileIslemler fileIslemler = new FileIslemler();
-//		fileIslemler.dosyaYarat();
+		fileIslemler.dosyaYarat();
 //		fileIslemler.dosyayaVeriEkle("Merhaba Dunya!");
-		fileIslemler.dosyadanVeriOkuma();
-		
+//		String tumMetin = fileIslemler.dosyadanVeriOkuma();
+//		fileIslemler.harfDegistir(tumMetin);
+//		fileIslemler.dosyadanVeriOkuma();
+		fileIslemler.dosyaSil(FileSabitler.file);
 	}
 	
 	public void dosyaYarat() {
@@ -73,22 +80,52 @@ public class FileIslemler {
 		}
 	}
 	
-	public void dosyadanVeriOkuma() {
+	public String dosyadanVeriOkuma() {
 		String tumMetin = "";
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(FileSabitler.file));
 			String deger = "";
 			while((deger = bufferedReader.readLine())!= null) {
 				tumMetin += deger + "\n";
+				
 			}
 				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println(tumMetin);
+		return tumMetin;
 		
 	}
-}
+
+	public void harfDegistir(String metin) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Lutfen degistirmek istediginiz harfi giriniz : ");
+		char eskiHarf = scanner.nextLine().charAt(0);
+		System.out.print("Lutfen yeni harfi giriniz : ");
+		char yeniHarf = scanner.nextLine().charAt(0);
+		metin = metin.replace(eskiHarf, yeniHarf);
+		dosyayaVeriEkle(metin);
+		
+	}
+	
+	public void dosyaSil(File file) {
+		if(file.exists()) {
+			try {
+				Thread.sleep(1000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 			
+			file.delete();
+				System.out.println(file.getName() + " adli dosya silindi...");
+			}else {
+				System.out.println("silinecek dosya bulunamadı");
+			}
+		
+		}
+	
+	}
+
 
 
 
